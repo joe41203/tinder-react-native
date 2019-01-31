@@ -3,6 +3,8 @@ import { Icon } from 'expo';
 
 import Colors from '../constants/Colors';
 
+// ICON一覧
+// https://expo.github.io/vector-icons/
 export default class TabBarIcon extends React.Component {
   render() {
     return (
