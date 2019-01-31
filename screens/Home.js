@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../styles';
+import SwipeCards from '../components/SwipeCards';
 
 import { 
   Text, 
@@ -13,9 +13,7 @@ class Home extends React.Component {
 
   render() {
     return (
-     <View>
-      <Text>Home</Text>
-     </View>
+      <SwipeCards />
     )
   }
 }
