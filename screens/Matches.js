@@ -1,3 +1,5 @@
+// 参考
+// https://www.bootdey.com/react-native-snippet/35/Comments-list-ui-example
 import React, { Component } from 'react';
 import {
   StyleSheet,
