@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import firebase from 'firebase';
 
-export default class Login extends Component {
+export default class SignUp extends Component {
   constructor(props) {
     super(props);
     state = {
@@ -20,23 +20,17 @@ export default class Login extends Component {
     };
   }
 
-  onClickListener = viewId => {
-    Alert.alert('Alert', 'Button pressed ' + viewId);
-  };
-
-  handleLogin = () => {
+  handleSignUp = () => {
     const { email, password } = this.state;
-    console.log('this.props', this.props);
-
     firebase
       .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then(response => {
-        alert('Login Success!');
-      })
-      .catch(error => {
-        alert(error.message);
-      });
+      .createUserWithEmailAndPassword(email, password)
+      .then(user => this.props.navigation.navigate('Main'))
+      .catch(error => this.setState({ errorMessage: error.message }));
+  };
+
+  onClickListener = viewId => {
+    Alert.alert('Alert', 'Button pressed ' + viewId);
   };
 
   render() {
@@ -51,6 +45,7 @@ export default class Login extends Component {
           />
           <TextInput
             style={styles.inputs}
+            autoCapitalize={'none'}
             placeholder='Email'
             keyboardType='email-address'
             underlineColorAndroid='transparent'
@@ -76,9 +71,9 @@ export default class Login extends Component {
 
         <TouchableHighlight
           style={[styles.buttonContainer, styles.loginButton]}
-          onPress={this.handleLogin}
+          onPress={this.handleSignUp}
         >
-          <Text style={styles.loginText}>Login</Text>
+          <Text style={styles.loginText}>SignUp</Text>
         </TouchableHighlight>
 
         <TouchableHighlight
