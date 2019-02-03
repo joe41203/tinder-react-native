@@ -11,7 +11,6 @@ class Home extends React.Component {
   componentWillMount() {}
 
   handleLogout = () => {
-    console.log('HelloWorld');
     firebase
       .auth()
       .signOut()

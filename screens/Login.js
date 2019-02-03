@@ -26,7 +26,6 @@ export default class Login extends Component {
 
   handleLogin = () => {
     const { email, password } = this.state;
-    console.log('this.props', this.props);
 
     firebase
       .auth()
