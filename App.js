@@ -1,19 +1,29 @@
 import React from 'react';
-import AppNavigator from './navigation/AppNavigator';
-import LoginScreen from './screens/Login';
+import { createSwitchNavigator, createAppContainer } from 'react-navigation';
 
-export default class App extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+// import the different screens
+import Loading from './screens/Loading';
+import SignUp from './screens/SignUp';
+import Login from './screens/Login';
+import Home from './screens/Home';
 
-  render() {
-    const isLogin = false;
+import firebase from 'firebase';
+import firebaseConfig from './config/firebase';
 
-    if (isLogin) {
-      return (<AppNavigator/>);
-    } else {
-      return (<LoginScreen/>);
+firebase.initializeApp(firebaseConfig);
+
+const App = createAppContainer(
+  createSwitchNavigator(
+    {
+      Loading,
+      SignUp,
+      Login,
+      Home
+    },
+    {
+      initialRouteName: 'Loading'
     }
-  }
-}
+  )
+);
+
+export default App;
